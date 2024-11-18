@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+
+  db:
+    build:
+      context: ./db
+    environment:
+      - POSTGRES_DB=mydb
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  flask_app:
+    build:
+      context: ./flask_app
+    container_name: api
+    environment:
+      - DATABASE_URL=postgresql://myuser:mypassword@db:5432/mydb
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+
+  uploader:
+    build:
+      context: ./uploader
+    container_name: upload
+    environment:
+      - DATABASE_URL=postgresql://myuser:mypassword@db:5432/mydb
+      - POLL_INTERVAL=5 
+    depends_on:
+      - db
+    volumes:
+      - ./credentials:/app/credentials
+
+volumes:
+  db-data:
