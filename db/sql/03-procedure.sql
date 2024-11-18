@@ -51,6 +51,3 @@ BEGIN
             wd.batch_id = next_batch_id;
 END;
 $BODY$;
-
-ALTER FUNCTION public.pull_weather_data()
-    OWNER TO myuser;

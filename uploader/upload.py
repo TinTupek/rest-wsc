@@ -137,10 +137,7 @@ class WeatherDataFetcher:
 async def main():
     interval = int(os.getenv("POLL_INTERVAL", 15))
     database_url = os.getenv("DATABASE_URL")
-    # service_account_file = 'argon-edge-441709-d9-81d5cb9561dd.json'  # Update with actual path
     service_account_file = '/app/credentials/service-account.json'
-    # drive_folder_id = '1CGnh-KWi0P6QSE6CwVXVqU_H8CBykhef'  # Update with your Drive folder ID
-    # service_account_file = os.getenv("GOOGLE_SERVICE_KEY")
     drive_folder_id = os.getenv("GOOGLE_DRIVE_FOLDER_ID")
     
     if not database_url:

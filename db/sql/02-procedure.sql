@@ -234,6 +234,3 @@ BEGIN
 
 END;
 $BODY$;
-
-ALTER FUNCTION public.weather_data(text[], character, text)
-    OWNER TO myuser;
