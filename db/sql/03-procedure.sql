@@ -21,7 +21,6 @@ BEGIN
     ORDER BY wd.obs_time 
     LIMIT 1;
 
-    -- Mark the batch as processed (fixed the ambiguous reference)
     UPDATE public.weather_data wd
     SET processed = true
     WHERE wd.batch_id = next_batch_id;

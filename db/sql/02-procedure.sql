@@ -52,7 +52,7 @@ BEGIN
 	    v_status := 400; -- Bad request -- no or wrong file type 
 	    RAISE NOTICE 'In IF file type %', p_file_type;
 	    RETURN; -- Exit the function
-	END IF;  -- Add this END IF
+	END IF;
     -- Set status code based on validation results
 	IF UPPER(p_temp_unit) NOT IN ('C', 'F') THEN
         v_status := 400; -- Bad request -- no or wrong tempeature unit 
